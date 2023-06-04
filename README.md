@@ -2,7 +2,6 @@
 # <p align="center"> Axios Config Helper</p>
 ### <p align="center">A helper for configuring the client API service using [axios](https://axios-http.com/)</p>
 
-<br/>
 
 ## Table of contents
 
@@ -17,14 +16,12 @@
 - [Route](#route)
 - [Typescript](#typescript)
 
-<br/>
 
 ## Install
 ```bash
 pnpm i @andremalveira/axios
 ```
 
-<br/>
 
 ## Quick start
 
@@ -59,7 +56,6 @@ const data = res.data;
 ### API Route
  > A helper for configuring the api's use of routes, see how to use [api route](#route).
 
-<br/>
 
 ## Create Axios Api
 
@@ -109,7 +105,6 @@ const api = createAxiosApi(); // createAxiosApi(config)
 > })
 > ```
 
-<br/> 
 
 ## Route
 A helper for configuring the api's use of routes
@@ -227,7 +222,6 @@ const api = createAxiosApi<{ route: typeof routes }>({
 > const res = await api.private.post(api.route.posts({ tag: 'tag-name', status: 1})) // /posts?tag=tag-name&status=1
 > ```
 
-<br/>
 
 ## Typescript
 `createAxiosApi`
@@ -255,12 +249,9 @@ api methods `request` `post` `get` `put` `patch` `delete`
 > post<{ token:string, user:User }, { username:string, password:string }>('/login')
 > ```
 
-<br/>
-
 ## Related / Dependencies
 [Axios](https://github.com/axios/axios) <br/>
 [js-cookie](https://github.com/js-cookie/js-cookie)
-
 
 
 ## Licence 

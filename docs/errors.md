@@ -15,7 +15,6 @@
 
 >`Solution`: Perform authentication or login to generate the token and use `api.cookie.set(token)` to insert the token or add the token directly in the authorization header.
 
-<br/>
 
 ### The authorization header entered is invalid
 
@@ -23,7 +22,6 @@
 
 > `Solution`: If you have configured `tokenAccessType` in `createAxiosApi`, check if it was typed correctly without extra spaces.
 
-<br/>
 
 ### Token returned from refreshtoken function is null | undefined
 
@@ -31,7 +29,6 @@
 
 > `Solution`: Review your `refreshToken` function, this function should be asynchronous and return only the token.
 
-<br/>
 
 ### Request or Response function configured in createAxiosApi is returning null or undefined value
 
@@ -39,7 +36,6 @@
 
 > `Solution`: Return the `req` or `res` in their respective functions.
 
-<br/>
 
 ## Route erros
 
@@ -49,7 +45,6 @@
 
 > `Solution`: Make sure you are passing a valid object in your api route containing the keys and values.
 
-<br/>
 
 ### Key [keyName] not found in path [pathName]
 
@@ -57,7 +52,6 @@
 
 > `Solution`: Make sure you correctly pass the name of the keys configured in the routes.
 
-<br/>
 
 ### No parameter key was found in the specified path ${path}
 
