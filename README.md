@@ -1,7 +1,9 @@
+# Axios Config Helper
+<a href="#details">
+<img src="https://img.shields.io/badge/License-MIT-319046?" alt="License-MIT"/>&nbsp;&nbsp;<img src="https://img.shields.io/badge/Latest%20Release-0.1.0-319046" alt="Version"/></a>
 
-# <p align="center"> Axios Config Helper</p>
-### <p align="center">A helper for configuring the client API service using [axios](https://axios-http.com/)</p>
 
+A helper for configuring the client API service using [axios](https://axios-http.com/)
 
 ## Table of contents
 
@@ -61,6 +63,7 @@ const data = res.data;
 
 ```ts
 // services/api.ts
+
 import { createAxiosApi } from '@andremalveira/axios';
 
 const api = createAxiosApi(); // createAxiosApi(config)
@@ -93,6 +96,7 @@ const api = createAxiosApi(); // createAxiosApi(config)
 >  - return: `token` - required
 > ```ts
 > // services/api.ts
+>
 >import { createAxiosApi } from '@andremalveira/axios';
 >
 > const api = createAxiosApi({
@@ -122,6 +126,8 @@ export default routes
 
 ```ts
 // services/api.ts
+
+import { createAxiosApi } from '@andremalveira/axios';
 import routes from 'routes/api.routes';
 
 const api = createAxiosApi({
@@ -140,6 +146,7 @@ const res = await api.public.post(api.route.login)
 
 ```ts
 // services/api.ts
+
 import routes from 'routes/api.routes';
 
 const api = createAxiosApi<{ route: typeof routes }>({
@@ -151,7 +158,7 @@ const api = createAxiosApi<{ route: typeof routes }>({
 
 
 ## Related / Dependencies
-[Axios](https://github.com/axios/axios) <br/>
+[axios](https://github.com/axios/axios) <br/>
 [js-cookie](https://github.com/js-cookie/js-cookie)
 
 
