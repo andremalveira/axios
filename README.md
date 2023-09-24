@@ -61,7 +61,6 @@ const data = res.data;
 
 ```ts
 // services/api.ts
-
 import { createAxiosApi } from '@andremalveira/axios';
 
 const api = createAxiosApi(); // createAxiosApi(config)
@@ -73,7 +72,7 @@ const api = createAxiosApi(); // createAxiosApi(config)
 [tokenAccessType](#tokenaccesstype) <br/>
 [cookie](#cookie) <br/>
 [refreshToken](#refreshtoken) <br/>
-[route](#route) <br/>
+[route](#route) or [endpoint](#route) <br/>
 
 ### baseUrl
 > Api base url
@@ -94,6 +93,7 @@ const api = createAxiosApi(); // createAxiosApi(config)
 >  - return: `token` - required
 > ```ts
 > // services/api.ts
+>import { createAxiosApi } from '@andremalveira/axios';
 >
 > const api = createAxiosApi({
 >⠀⠀⠀baseURL: 'https://api',    
@@ -108,8 +108,7 @@ const api = createAxiosApi(); // createAxiosApi(config)
 
 ## Route
 A helper for configuring the api's use of routes
-- [param](#param)
-- [query](#query)
+> ⭐ See about [`Helpers for creating API route paths to the client.`](https://github.com/andremalveira/route#route)
 
 ```ts
 // routes/api.routes.ts
@@ -123,11 +122,11 @@ export default routes
 
 ```ts
 // services/api.ts
-
 import routes from 'routes/api.routes';
+
 const api = createAxiosApi({
 ⠀⠀⠀baseURL: 'https://api',
-⠀⠀⠀route: routes,
+⠀⠀⠀route: routes, // or endpoint: routes
 })
 ```
 
@@ -141,8 +140,8 @@ const res = await api.public.post(api.route.login)
 
 ```ts
 // services/api.ts
-
 import routes from 'routes/api.routes';
+
 const api = createAxiosApi<{ route: typeof routes }>({
 ⠀⠀⠀baseURL: 'https://api',
 ⠀⠀⠀route: routes,
@@ -150,104 +149,6 @@ const api = createAxiosApi<{ route: typeof routes }>({
 ```
 ![using-typescript-for-route-type.png](public/img/using-typescript-for-route-type.png)
 
-### param
->  A helper for inserting dynamic route parameters
->  - param: `path`
->  - return: `function( Value | Object(Value) )` <br/> <br/>
-> Recognized parameter key format: `:key` | `{key}` | `[key]`
-> ```ts
-> // routes/api.routes.ts
->
-> import { param } from '@andremalveira/axios';
-> 
-> const routes = {
->     users: '/users',
->     user: param('/user/:id'),
-> }
-> export default routes
-> ```
-
-> ```ts
-> // Example of use
-> 
-> const userId = 392;
-> const res = await api.private.post(api.route.user(userId))
-> ```
-
-#### Multiples params
-
-> ```ts  
-> userPost: param('/user/:userId/post/:postId'),
-> ```
-> ```ts
-> // Example of use
-> 
-> const userId = 392;
-> const postId = 2;
-> const res = await api.private.post(api.route.userPost({ userId, postId})) // /user/392/post/2'
-> ```
-
-#### Params & querys
-
-> ```ts
-> // Example of use
->
-> api.route.userPost({ userId, postId }, { tag: 'tag-name' }) // /user/392/post/2?tag=tag-name'
-> ```
-
-#### Using typescript for `params type`
->  - param<ParamType, QueryType>('/path')
-> ```ts
-> userPost: param<'userId' | 'postId'>('/user/:userId/post/:postId'),
-> ```
-> ![using-typescript-for-params-type.png](public/img/using-typescript-for-params-type.png)
-
-### query
->  A helper to insert dynamic query params into the route
->  - param: `path`
->  - return: `function(Object(Value)?)` <br/> <br/>
-> ```ts
-> // routes/api.routes.ts
->
-> import { query } from '@andremalveira/axios';
-> 
-> const routes = {
->     posts: query('/posts'),
-> }
-> export default routes
-> ```
-> ```ts
-> // Example of use
->                                    
-> const res = await api.private.post(api.route.posts({ tag: 'tag-name', status: 1})) // /posts?tag=tag-name&status=1
-> ```
-
-
-## Typescript
-`createAxiosApi`
-> ```ts
-> createAxiosApi<AxiosApiProperty>()
->
-> //Example 
-> createAxiosApi<{ route: typeof routes }>()
-> ```
-
-`param` & `query`
-> ```ts
-> param<ParamKeys, QueryKeys>('/path')
-> query<QueryKeys>('/path')
->
-> //Example 
-> param<'id' | 'postId', 'page' | 'tag'>('/path')
-> ```
-
-api methods `request` `post` `get` `put` `patch` `delete`
-> ```ts
-> post<ResponseData, Data>('/path')
->
-> //Example 
-> post<{ token:string, user:User }, { username:string, password:string }>('/login')
-> ```
 
 ## Related / Dependencies
 [Axios](https://github.com/axios/axios) <br/>
@@ -255,4 +156,4 @@ api methods `request` `post` `get` `put` `patch` `delete`
 
 
 ## Licence 
-[MIT]()
+[MIT](LICENSE)
