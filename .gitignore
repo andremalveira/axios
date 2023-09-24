@@ -24,7 +24,7 @@ dist-ssr
 *.sw?
 
 #temp
-src
-tsconfig.json
-vite.config.js
-package.json
+#src
+#tsconfig.json
+#vite.config.js
+#package.json
